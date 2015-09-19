@@ -33,5 +33,13 @@ export default Ember.Route.extend({
 				limit: this.get('limit')
 			})
 		}
+	},
+	
+	setupController(controller, model) {
+		this._super(controller, model);
+		controller.setProperties({
+			offset: this.get('offset'),
+			limit: this.get('limit')
+		});
 	}
 });
