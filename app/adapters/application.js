@@ -1,14 +1,3 @@
-import DS from 'ember-data';
+import FixtureAdapter from 'ember-data-fixture-adapter';
 
-export default DS.FixtureAdapter.extend({
-	queryFixtures: function(fixtures, query) {
-		var properties = Object.keys(query);
-		
-		// adding pagination support
-		if(properties.contains('offset')){
-			fixtures = fixtures.slice(query.offset, query.offset + query.limit);
-		}
-		
-		return fixtures;
-	}
-});
+export default FixtureAdapter.extend({});

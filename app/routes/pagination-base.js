@@ -20,19 +20,15 @@ export default Ember.Route.extend({
 			var page = params.page;
 			page = isNaN(page) ? 1 : Math.floor(Math.abs(page));
 			this.set('offset', (page - 1) * this.get('limit'));
-			
-			// remove this when using rest adapter
-			this.store.find(this.get('domain')).then(function(that){
-				return function(completeList){
-					that.store.metaForType(that.get('domain'), {total:completeList.get('length')});
-				};
-			}(this));
-			
-			return this.store.find(this.get('domain'), {
-				offset: this.get('offset'),
-				limit: this.get('limit')
-			})
 		}
+		
+		return this.store.findAll(this.get('domain'), {
+			offset: this.get('offset'),
+			limit: this.get('limit'),
+			meta: {
+				total: this.get('domain.length')
+			}
+		})
 	},
 	
 	setupController(controller, model) {

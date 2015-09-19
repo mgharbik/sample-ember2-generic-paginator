@@ -1,9 +1,15 @@
 import DS from 'ember-data';
 
-export default DS.Model.extend({
+var User = DS.Model.extend({
 	firstName: DS.attr('string'),
 	lastName: DS.attr('string'),
 	
+	fullName: Ember.computed('firstName', 'lastName', function(){
+		return this.get('firstName') + ' ' + this.get('lastName');
+	})
+});
+
+User.reopenClass({
 	FIXTURES: [
 		{ id: 1, firstName: 'Trek', lastName: 'Glowacki' },
 		{ id: 2, firstName: 'Tom' , lastName: 'Dale' },
@@ -34,3 +40,5 @@ export default DS.Model.extend({
 		{ id: 27, firstName: 'David' , lastName: 'Rogger' }
 	]
 });
+
+export default User;
