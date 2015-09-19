@@ -5,3 +5,6 @@
 		<li>{{user.id}}. {{user.fullName}}</li>
 	{{/each}}
 </ul>
+
+{{#pagination-base action='previousPage' enabled=hasPreviousPage}}previous{{/pagination-base}}
+{{#pagination-base action='nextPage' enabled=hasNextPage}}next{{/pagination-base}}
