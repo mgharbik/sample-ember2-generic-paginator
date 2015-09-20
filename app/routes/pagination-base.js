@@ -21,13 +21,10 @@ export default Ember.Route.extend({
 			page = isNaN(page) ? 1 : Math.floor(Math.abs(page));
 			this.set('offset', (page - 1) * this.get('limit'));
 		}
-		
+			
 		return this.store.findAll(this.get('domain'), {
 			offset: this.get('offset'),
-			limit: this.get('limit'),
-			meta: {
-				total: this.get('domain.length')
-			}
+			limit: this.get('limit')
 		})
 	},
 	

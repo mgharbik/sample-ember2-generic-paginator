@@ -2,6 +2,8 @@
 
 module.exports = function(environment) {
   var ENV = {
+	host: 'http://0.0.0.0:3000',
+	namespace: 'v1',
     modulePrefix: 'ember-cli-pagination-sample',
     environment: environment,
     baseURL: '/',
@@ -17,6 +19,10 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     }
+  };
+
+  ENV.contentSecurityPolicy = {
+    'connect-src': "'self' *"
   };
 
   if (environment === 'development') {
